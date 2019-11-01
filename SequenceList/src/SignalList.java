@@ -14,14 +14,16 @@ public class SignalList {
         lis.addFirst(20);
         lis.addFirst(13);
         lis.addFirst(10);
-        lis.addLast(42);
-        lis.addLast(50);
+        lis.addLast(10);
+        lis.addLast(10);
         lis.addLast(29);
         lis.display();
 
         System.out.println("---------------------------------------");
-        lis.addIndex(1,14);
-        lis.display();
+//        lis.addIndex(1,14);
+//        lis.removeAllKey(10);
+//        lis.display();
+        lis.display2(lis.middleNode());
     }
 }
 class ListNode{
@@ -116,11 +118,110 @@ class MySignalList{
     //打印
     public void display(){
         ListNode cur=this.head;
-        while(cur.next!=null){
+        while(cur!=null){
             System.out.printf("%d\t",cur.data);
             cur=cur.next;
         }
-        System.out.print(cur.data);
         System.out.println();
+    }
+    public void display2(ListNode newHead){
+        ListNode cur=newHead;
+        while(cur!=null){
+            System.out.printf("%d\t",cur.data);
+            cur=cur.next;
+        }
+        System.out.println();
+    }
+
+    //删除第一次出现关键字为key的节点
+    //key的前驱节点
+    private ListNode searchPrev(int key){
+        ListNode cur=this.head;
+        while(cur.next.data!=key){
+            cur=cur.next;
+            if(cur.next==null){
+                return null;
+            }
+        }
+        return cur;
+    }
+    public void remove(int key){
+        if(this.head==null){
+            System.out.println("单链表为空！");
+            return;
+        }
+        ListNode lis=searchPrev(key);
+        if(lis==null){
+            System.out.println("没有该元素！");
+        }
+        if(this.head.data==key){
+            this.head=this.head.next;
+        }
+        lis.next=lis.next.next;
+    }
+    //删除所有值为key的节点
+    public void removeAllKey(int key){
+        ListNode prev=this.head.next;
+        ListNode cur=this.head;
+        while(prev!=null){
+            if(cur.next.data==key){
+                cur.next=prev.next;
+                prev=prev.next;
+            }else{
+                cur=prev;
+                prev=prev.next;
+            }
+        }
+        if(this.head.data==key){
+            this.head=this.head.next;
+        }
+    }
+    public ListNode reverseList(){
+        ListNode prev=null;
+        ListNode newHead=null;
+        ListNode cur=this.head;
+        while(cur!=null){
+            ListNode nextNode=cur.next;
+            if(nextNode==null){
+                newHead=cur;
+            }
+            cur.next=prev;
+            prev=cur;
+            cur=nextNode;
+        }
+        return newHead;
+    }
+    //单链表的中间节点
+    public ListNode middleNode(){
+        ListNode slow=this.head;
+        ListNode fast=this.head;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        return slow;
+    }
+
+    //找倒数第k个节点之后的节点
+    public ListNode findKtjToTail(int k){
+        //k>getLength()
+        if(k<0){
+            return null;
+        }
+        ListNode slow=this.head;
+        ListNode fast=this.head;
+        while(k-1>0){
+            if(fast.next!=null){
+                fast=fast.next;
+                k--;
+            }else{
+                System.out.println("没有这个节点！");
+            }
+        }
+        while(fast.next!=null){
+            slow=slow.next;
+            fast=fast.next;
+        }
+        return slow;
     }
 }
