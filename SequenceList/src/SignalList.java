@@ -1,3 +1,4 @@
+import java.io.OutputStream;
 import java.util.List;
 
 /**
@@ -11,19 +12,19 @@ import java.util.List;
 public class SignalList {
     public static void main(String[] args) {
         MySignalList lis=new MySignalList();
-        lis.addFirst(20);
-        lis.addFirst(13);
-        lis.addFirst(10);
-        lis.addLast(10);
-        lis.addLast(10);
-        lis.addLast(29);
+        lis.addLast(1);
+        lis.addLast(2);
+        lis.addLast(3);
+        lis.addLast(2);
+        lis.addLast(1);
         lis.display();
-
         System.out.println("---------------------------------------");
 //        lis.addIndex(1,14);
 //        lis.removeAllKey(10);
 //        lis.display();
-        lis.display2(lis.middleNode());
+//        lis.display2(lis.deleteDuplication());
+//        lis.display2(lis.partition(4));
+        System.out.println(lis.chkPalindrome());
     }
 }
 class ListNode{
@@ -223,5 +224,139 @@ class MySignalList{
             fast=fast.next;
         }
         return slow;
+    }
+//    public ListNode reverseList2(){
+//        ListNode prev =null;
+//        ListNode newHead=null;
+//        ListNode cur=this.head;
+//        while(cur!=null){
+//            ListNode nextNode=cur.next;
+//            if(nextNode==null){
+//                newHead=cur;
+//            }
+//            cur.next=prev;
+//            prev=cur;
+//            cur=nextNode;
+//        }
+//        return newHead;
+//    }
+    public ListNode findKtjToTail2(int k){
+        ListNode fast=null;
+        ListNode slow=null;
+        if(k<0){
+            return null;
+        }
+        while(k-1>0){
+            if(fast.next!=null){
+                fast=fast.next;
+                k--;
+            }else{
+                System.out.println("没有这个节点！");
+            }
+        }
+        while(fast.next!=null){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return slow;
+    }
+    //11月2日
+    public ListNode partition(int x) {
+        ListNode cur = this.head;
+        ListNode beforeStart = null;
+        ListNode beforeEnd = null;
+        ListNode afterStart = null;
+        ListNode afterEnd = null;
+        while (cur != null) {
+            /*ListNode curNext=cur;
+            cur.next=null;*/
+            //cur.data < x
+            if(cur.data < x) {
+                //第一次插入
+                if(beforeStart==null) {
+                    beforeStart=cur;
+                    beforeEnd=cur;
+                }else {
+                    beforeEnd.next=cur;
+                    beforeEnd=beforeEnd.next;
+                }
+            }else {
+                //第一次插入
+                if(afterStart == null) {
+                    afterStart=cur;
+                    afterEnd=cur;
+                }else {
+                    afterEnd.next=cur;
+                    afterEnd=afterEnd.next;
+                }
+            }
+            cur=cur.next;
+            //cur=curNext;
+        }
+        if(beforeStart==null){
+            return afterStart;
+        }
+        beforeEnd.next=afterStart;
+        if(afterStart!=null){
+            afterEnd.next=null;
+        }
+        return beforeStart;
+    }
+
+    //删除重复的节点
+    public ListNode deleteDuplication() {
+        ListNode node = new ListNode(-1);
+        ListNode cur = this.head;
+        ListNode tmp = node;
+        while (cur != null) {
+            if(cur.next != null &&
+                    cur.data == cur.next.data) {
+                //1、循环
+                while(cur.next!=null&&cur.data==cur.next.data){
+                    cur=cur.next;
+                }
+                //2、退出循环 cur要多走一步
+                cur=cur.next;
+//                tmp.next=cur;
+            }else {
+                //当前节点 不等于下一个节点的时候
+                tmp.next = cur;
+                cur = cur.next;
+                tmp = tmp.next;
+            }
+        }
+        tmp.next=null;
+        return node.next;
+    }
+
+    //回文
+    public boolean chkPalindrome() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+
+        while (fast != null && fast.next!=null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        //反转
+        ListNode p = slow.next;
+        while (p != null) {
+            ListNode pNext = p.next;
+            //反转
+            p.next=slow;
+            slow=p;
+            p=pNext;
+        }
+        //slow往前    head 往后  .data不一样 返回false
+        //直到相遇
+        while(this.head!=slow){
+            if(this.head.data==slow.data){
+                this.head=this.head.next;
+                slow=slow.next;
+            }else{
+                return false;
+            }
+        }
+        return true;
     }
 }
