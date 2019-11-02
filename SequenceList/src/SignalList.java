@@ -12,13 +12,21 @@ import java.util.List;
 public class SignalList {
     public static void main(String[] args) {
         MySignalList lis=new MySignalList();
+        MySignalList lis2=new MySignalList();
         lis.addLast(1);
         lis.addLast(2);
         lis.addLast(3);
-        lis.addLast(3);
+//        lis.addLast(3);
         lis.addLast(2);
         lis.addLast(1);
         lis.display();
+        //链表lis2
+        lis2.addLast(1);
+        lis2.addLast(2);
+        lis2.addLast(3);
+//        lis.addLast(3);
+        lis2.addLast(21);
+        lis2.addLast(1);
         System.out.println("---------------------------------------");
 //        lis.addIndex(1,14);
 //        lis.removeAllKey(10);
@@ -27,7 +35,74 @@ public class SignalList {
 //        lis.display2(lis.partition(4));
 //        System.out.println(lis.chkPalindrome());
 //        lis.creatCycle();
-        System.out.println(lis.hasCycle());
+//        System.out.println(lis.hasCycle());
+//        System.out.println(lis.detectCycle());
+        intersect(lis.head,lis2.head);
+        ListNode node = getIntersectionNode(lis.head, lis2.head);
+        System.out.println(node.data);
+    }
+
+    public static ListNode  getIntersectionNode
+            (ListNode headA,ListNode headB){
+        if(headA == null || headB == null) {
+            return null;
+        }
+        //永远指向最长的单链表
+        ListNode pL = headA;
+        //永远指向最短的单链表
+        ListNode pS = headB;
+
+        int lenA = 0;
+        ListNode tmp1=pL;
+        while(tmp1!=null){
+            lenA++;
+            tmp1=tmp1.next;
+        }
+        int lenB = 0;
+        ListNode tmp2=pS;
+        while(tmp2!=null){
+            lenB++;
+            tmp2=tmp2.next;
+        }
+        //分别求长度
+
+        //求长度的差值
+        int len = lenA-lenB;
+        //如果是负数-》pL = headB;  pS = headA
+        if(len<0){
+            pL=headB;
+            pS=headA;
+            len=lenB-lenA;
+        }
+        //只需要让pL走len步就好了
+        while(len>0){
+            pL=pL.next;
+            len--;
+        }
+        //走完len步之后  两个同时开始走
+        //一直走 走到next值相同时 就是交点
+        while(pL!=pS&&pS!=null){
+            pL=pL.next;
+            pS=pS.next;
+        }
+        if(pL==pS&&pS!=null){
+            return pL;
+        }
+       /*while(pL.next!=pS.next){
+            pL=pL.next;
+            pS=pS.next;
+        }*/
+        //万一没有相交，并且两个单链表一样长
+        //防止最后一个节点
+        /*if(pL.next==pS.next&&pL.next!=null){
+            return pL.next;
+        }*/
+        return null;
+    }
+
+    //将两个单链表相交
+    public static void intersect(ListNode headA,ListNode headB){
+        headA.next.next=headB.next.next.next;
     }
 }
 class ListNode{
@@ -396,5 +471,26 @@ class MySignalList{
             cur=cur.next;
         }
         cur.next=this.head.next;
+    }
+    //环的入口
+    public ListNode detectCycle(){
+        ListNode fast=this.head;
+        ListNode slow=this.head;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if(slow==fast){
+                break;
+            }
+        }
+        if(fast==null||fast.next==null){
+            return null;
+        }
+        slow=this.head;
+        while(fast!=null&&fast!=slow){
+            slow=slow.next;
+            fast=fast.next;
+        }
+        return slow;
     }
 }

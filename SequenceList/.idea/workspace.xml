@@ -15,10 +15,12 @@
       <file leaf-file-name="SignalList.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SignalList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="394" column="9" lean-forward="true" selection-start-line="394" selection-start-column="9" selection-end-line="394" selection-end-column="9" />
+            <state relative-caret-position="300">
+              <caret line="91" column="23" lean-forward="true" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2640#2641#0" expanded="true" />
+                <element signature="e#2692#2693#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,12 +86,6 @@
               <item name="SequenceList" type="b2602c69:ProjectViewProjectNode" />
               <item name="SequenceList" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SequenceList" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SequenceList" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="SeqList.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
           </expand>
           <select />
@@ -192,16 +188,15 @@
       <workItem from="1572342569393" duration="8623000" />
       <workItem from="1572590820651" duration="5570000" />
       <workItem from="1572654895205" duration="8305000" />
-      <workItem from="1572664021597" duration="4459000" />
+      <workItem from="1572664021597" duration="11037000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26957000" />
+    <option name="totallyTimeSpent" value="33535000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -213,11 +208,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32954547" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32954547" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.19515885" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19515885" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -251,6 +246,8 @@
           <caret line="142" column="41" lean-forward="true" selection-start-line="142" selection-start-column="41" selection-end-line="142" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2640#2641#0" expanded="true" />
+            <element signature="e#2692#2693#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -268,6 +265,8 @@
           <caret line="129" column="25" lean-forward="true" selection-start-line="129" selection-start-column="25" selection-end-line="129" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2640#2641#0" expanded="true" />
+            <element signature="e#2692#2693#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -288,10 +287,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SignalList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="394" column="9" lean-forward="true" selection-start-line="394" selection-start-column="9" selection-end-line="394" selection-end-column="9" />
+        <state relative-caret-position="300">
+          <caret line="91" column="23" lean-forward="true" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2640#2641#0" expanded="true" />
+            <element signature="e#2692#2693#0" expanded="true" />
           </folding>
         </state>
       </provider>
