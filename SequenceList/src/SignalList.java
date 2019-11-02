@@ -15,6 +15,7 @@ public class SignalList {
         lis.addLast(1);
         lis.addLast(2);
         lis.addLast(3);
+        lis.addLast(3);
         lis.addLast(2);
         lis.addLast(1);
         lis.display();
@@ -24,7 +25,9 @@ public class SignalList {
 //        lis.display();
 //        lis.display2(lis.deleteDuplication());
 //        lis.display2(lis.partition(4));
-        System.out.println(lis.chkPalindrome());
+//        System.out.println(lis.chkPalindrome());
+//        lis.creatCycle();
+        System.out.println(lis.hasCycle());
     }
 }
 class ListNode{
@@ -353,10 +356,45 @@ class MySignalList{
             if(this.head.data==slow.data){
                 this.head=this.head.next;
                 slow=slow.next;
+                //偶数回文
+                if(this.head.next==slow&&this.head.data==slow.data){
+                    return true;
+                }
             }else{
                 return false;
             }
         }
         return true;
+    }
+    //判断是否有环
+    public boolean hasCycle(){
+        ListNode fast=this.head;
+        ListNode slow=this.head;
+//        while(true){
+//            fast=fast.next.next;
+//            slow=slow.next;
+//            if(fast==slow){
+//                return true;
+//            }
+//            if(fast==null||fast.next == null){
+//                return false;
+//            }
+//        }
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if(slow==fast){
+                return true;
+            }
+        }
+        return false;
+    }
+    //创建一个环
+    public void creatCycle(){
+        ListNode cur=this.head;
+        while(cur.next!=null){
+            cur=cur.next;
+        }
+        cur.next=this.head.next;
     }
 }
