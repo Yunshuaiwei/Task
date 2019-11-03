@@ -104,6 +104,31 @@ public class SignalList {
     public static void intersect(ListNode headA,ListNode headB){
         headA.next.next=headB.next.next.next;
     }
+
+    //合并两个有序单链表
+    public static ListNode mergeTwoLists(
+            ListNode headA,ListNode headB) {
+        ListNode node=new ListNode(-1);
+        ListNode tmp=node;
+        while(headA!=null&&headB!=null){
+            if(headA.data<headB.data){
+                tmp.next=headA;
+                headA=headA.next;
+                tmp=tmp.next;
+            }else{
+                tmp.next=headB;
+                headB=headB.next;
+                tmp=tmp.next;
+            }
+        }
+        if(headA!=null){
+            tmp.next=headA;
+        }
+        if(headB!=null){
+            tmp.next=headB;
+        }
+        return null;
+    }
 }
 class ListNode{
     public int data;
