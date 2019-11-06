@@ -41,7 +41,7 @@ public class SignalList {
         ListNode node = getIntersectionNode(lis.head, lis2.head);
         System.out.println(node.data);
     }
-
+    //找单链表的交点
     public static ListNode  getIntersectionNode
             (ListNode headA,ListNode headB){
         if(headA == null || headB == null) {
@@ -328,21 +328,6 @@ class MySignalList{
         }
         return slow;
     }
-//    public ListNode reverseList2(){
-//        ListNode prev =null;
-//        ListNode newHead=null;
-//        ListNode cur=this.head;
-//        while(cur!=null){
-//            ListNode nextNode=cur.next;
-//            if(nextNode==null){
-//                newHead=cur;
-//            }
-//            cur.next=prev;
-//            prev=cur;
-//            cur=nextNode;
-//        }
-//        return newHead;
-//    }
     public ListNode findKtjToTail2(int k){
         ListNode fast=null;
         ListNode slow=null;
