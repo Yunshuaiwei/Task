@@ -1,3 +1,4 @@
+import book.Book;
 import com.sun.media.sound.SoftTuning;
 import operation.JDBCUtils;
 import user.Admin;
@@ -17,7 +18,15 @@ public class Main {
 
     public static void main(String[] args) {
         int choice = login();
-        System.out.println(choice);
+        if(choice==0){
+            NormalUser user = new NormalUser("普通用户");
+            int label = user.menu();
+            user.doOperation(label,new Book());
+        }else{
+            Admin admin = new Admin("管理员");
+            int label = admin.menu();
+            admin.doOperation(label,new Book());
+        }
     }
     public static int login() {
         int choice;

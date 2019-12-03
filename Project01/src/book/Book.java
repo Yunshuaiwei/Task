@@ -16,4 +16,5 @@ public class Book {
         this.price = price;
         this.type = type;
     }
+    public Book(){}
 }
