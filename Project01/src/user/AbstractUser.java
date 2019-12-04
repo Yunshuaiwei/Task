@@ -3,6 +3,7 @@ package user;
 import book.Book;
 import operation.Operation;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Scanner;
  * @Date 2019/12/3 16:56
  **/
 public abstract class AbstractUser {
-    String name;
+    public String name;
     Operation [] operation;
     Scanner scanner =new Scanner(System.in);
     /**

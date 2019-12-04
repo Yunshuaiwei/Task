@@ -2,11 +2,17 @@ package operation;
 
 import book.Book;
 
+import java.util.Scanner;
+
+/**
+ * @author DELL
+ */
 public interface Operation {
     /**
      * 实现功能
      * @param book
      * @return
      */
-    public void work(Book book);
+    void work(Book book);
+    Scanner scanner=new Scanner(System.in);
 }

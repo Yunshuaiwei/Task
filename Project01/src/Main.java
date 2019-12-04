@@ -1,5 +1,4 @@
 import book.Book;
-import com.sun.media.sound.SoftTuning;
 import operation.JDBCUtils;
 import user.Admin;
 import user.NormalUser;
@@ -15,17 +14,22 @@ import java.util.Scanner;
  * @Date 2019/12/3 17:20
  **/
 public class Main {
-
     public static void main(String[] args) {
         int choice = login();
         if(choice==0){
             NormalUser user = new NormalUser("普通用户");
-            int label = user.menu();
-            user.doOperation(label,new Book());
+            System.out.println("欢迎登陆图书管理系统"+"("+user.name+")");
+            while(true){
+                int label = user.menu();
+                user.doOperation(label,new Book());
+            }
         }else{
             Admin admin = new Admin("管理员");
-            int label = admin.menu();
-            admin.doOperation(label,new Book());
+            System.out.println("欢迎登陆图书管理系统"+"("+admin.name+")");
+            while(true){
+                int label = admin.menu();
+                admin.doOperation(label,new Book());
+            }
         }
     }
     public static int login() {
@@ -89,7 +93,6 @@ public class Main {
             password=scanner.next();
         }
         JDBCUtils.closeResources(conn,ps);
-        scanner.close();
         System.out.println("登录成功！");
         return choice;
     }

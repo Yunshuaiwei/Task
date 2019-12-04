@@ -20,14 +20,21 @@ public class Admin extends AbstractUser{
     }
     @Override
     public int menu() {
-        System.out.println("欢迎登陆图书管理系统"+"("+name+")");
-        System.out.println("请输入你的选择：");
-        int choice = scanner.nextInt();
+        int choice;
         System.out.println("1、添加书籍");
         System.out.println("2、删除书籍");
         System.out.println("3、修改图书信息");
         System.out.println("4、展示所有图书");
         System.out.println("0、退出");
+        System.out.println("请输入你的选择：");
+        while(true){
+            choice = scanner.nextInt();
+            if(choice>4||choice<0){
+                System.out.println("您输入的操作有误，请重新输入：");
+            }else{
+                break;
+            }
+        }
         return choice;
     }
 }
