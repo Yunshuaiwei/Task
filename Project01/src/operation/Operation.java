@@ -2,6 +2,7 @@ package operation;
 
 import book.Book;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -13,6 +14,6 @@ public interface Operation {
      * @param book
      * @return
      */
-    void work(Book book);
+    void work(Book book) throws SQLException;
     Scanner scanner=new Scanner(System.in);
 }

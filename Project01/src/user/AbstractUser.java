@@ -20,6 +20,10 @@ public abstract class AbstractUser {
      */
     public abstract int menu();
     public void doOperation(int choice, Book book){
-        operation[choice].work(book);
+        try {
+            operation[choice].work(book);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

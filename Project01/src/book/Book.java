@@ -12,10 +12,10 @@ import java.sql.SQLException;
  * @Date 2019/12/3 16:13
  **/
 public class Book {
-    String name;
-    String author;
-    double price;
-    String type;
+    public String name;
+    public String author;
+    public double price;
+    public String type;
     String isBorrow;
     public Book(String name, String author, double price, String type,String isBorrow) {
         this.name = name;
@@ -26,6 +26,12 @@ public class Book {
     }
     public Book(){}
 
+    public Book(String name, String author, double price, String type) {
+        this.name = name;
+        this.author = author;
+        this.price = price;
+        this.type = type;
+    }
 
     /**
      * 判断是否有此书

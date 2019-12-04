@@ -36,7 +36,7 @@ public class Main {
         int choice;
         Connection conn = JDBCUtils.getConnection();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("账户类型：0.普通用户<----->1.管理员");
+        System.out.println("账户类型：0.普通用户-----1.管理员");
         System.out.println("请选择账户类型：");
         while(true){
             choice= scanner.nextInt();
