@@ -14,18 +14,18 @@ public class AddBook implements Operation{
     @Override
     public void work(Book book)  {
         System.out.println("请输入书名：");
-        String name = scanner.nextLine();
+        String name = scanner.next();
         boolean b = book.hasBook(name);
         if (b) {
             System.out.println("此书已经存在！");
         } else {
             Connection conn = JDBCUtils.getConnection();
             System.out.println("请输入作者：");
-            String author = scanner.nextLine();
+            String author = scanner.next();
             System.out.println("请输入价格：");
-            String price = scanner.nextLine();
+            String price = scanner.next();
             System.out.println("请输入图书类型：");
-            String type = scanner.nextLine();
+            String type = scanner.next();
             String sql = "insert into book(name,author,price,type,isBorrow)values(?,?,?,?,?)";
             PreparedStatement pre = null;
             try {
