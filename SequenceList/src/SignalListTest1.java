@@ -43,7 +43,7 @@ public class SignalListTest1 {
         if(headB!=null){
             tmp.next=headB;
         }
-        return null;
+        return node.next;
     }
     //两个单链表的交点
     public static ListNode2 getIntersectionNode(ListNode2 headA,ListNode2 headB){

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IOStream/IOStream.iml" filepath="$PROJECT_DIR$/IOStream/IOStream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Project01/Project01.iml" filepath="$PROJECT_DIR$/Project01/Project01.iml" />
       <module fileurl="file://$PROJECT_DIR$/SequenceList/SequenceList.iml" filepath="$PROJECT_DIR$/SequenceList/SequenceList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sort/Sort.iml" filepath="$PROJECT_DIR$/Sort/Sort.iml" />
       <module fileurl="file://$PROJECT_DIR$/Task.iml" filepath="$PROJECT_DIR$/Task.iml" />
     </modules>
   </component>
