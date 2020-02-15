@@ -229,20 +229,20 @@ public class Sort {
         arr[i] = temp;
     }
 
-    public static void heapSort(int[] arr) {
+    public static void heapSort5(int[] arr) {
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
-            adjustHeap(arr, i, arr.length);
+            adjustHeap5(arr, i, arr.length);
         }
         int temp = 0;
         for (int i = arr.length - 1; i > 0; i--) {
             temp = arr[i];
             arr[i] = arr[0];
             arr[0] = temp;
-            adjustHeap(arr, 0, i);
+            adjustHeap5(arr, 0, i);
         }
     }
 
-    public static void adjustHeap(int[] arr, int i, int length) {
+    public static void adjustHeap5(int[] arr, int i, int length) {
         int temp = arr[i];
         for (int k = i * 2 + 1; k < length; k = k * 2 + 1) {
             if (k + 1 < length && arr[k] < arr[k + 1]) {
@@ -257,7 +257,68 @@ public class Sort {
         }
         arr[i] = temp;
     }
-    public static void quickSort(int []arr,int left,int right){
+    public static void quickSort5(int []arr,int left,int right){
+        int l=left;
+        int r=right;
+        int pivot=arr[(l+r)/2];
+        while(l<r){
+            while(arr[l]<pivot){
+                l++;
+            }
+            while(arr[r]>pivot){
+                r--;
+            }
+            if(l>=r){
+                break;
+            }
+            int temp=arr[l];
+            arr[l]=arr[r];
+            arr[r]=temp;
+            if(arr[l]==pivot){
+                r--;
+            }
+            if(arr[r]==pivot){
+                l++;
+            }
+        }
+        if(l==r){
+            l++;
+            r--;
+        }
+        if(left<r){
+            quickSort5(arr,left,r);
+        }
+        if(right>l){
+            quickSort5(arr,l,right);
+        }
+    }
+    public static void heapSort(int [] arr){
+        for (int i = arr.length/2-1; i >=0; i--) {
+            adjustHeap(arr,i,arr.length);
+        }
+        for (int i = arr.length-1; i > 0; i--) {
+            int temp=arr[0];
+            arr[0]=arr[i];
+            arr[i]=temp;
+            adjustHeap(arr,0,i);
+        }
+    }
+    public static void adjustHeap(int [] arr ,int i,int length){
+        int temp=arr[i];
+        for (int k = i*2+1; k < length; k=k*2+1) {
+            if(k+1<length&&arr[k]<arr[k+1]){
+                k++;
+            }
+            if(arr[k]>temp){
+                arr[i]=arr[k];
+                i=k;
+            }else{
+                break;
+            }
+        }
+        arr[i]=temp;
+    }
+    public static void quickSort(int [] arr,int left,int right){
         int l=left;
         int r=right;
         int pivot=arr[(l+r)/2];
@@ -288,7 +349,7 @@ public class Sort {
         if(left<r){
             quickSort(arr,left,r);
         }
-        if(right>l){
+        if(l<right){
             quickSort(arr,l,right);
         }
     }
