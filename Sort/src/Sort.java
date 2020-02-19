@@ -8,8 +8,8 @@ public class Sort {
     public static void main(String[] args) {
         int[] arr = {-9, 78, 0, 23, -567, 0};
 //        bubbleSort(arr);
-        quickSort(arr, 0, arr.length - 1);
-//        heapSort(arr);
+//        quickSort(arr, 0, arr.length - 1);
+        heapSort(arr);
         System.out.println("排序后：" + Arrays.toString(arr));
     }
 
@@ -358,19 +358,19 @@ public class Sort {
         }
     }
 
-    public static void heapSort(int[] arr) {
+    public static void heapSort7(int[] arr) {
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
-            adjustHeap(arr, i, arr.length);
+            adjustHeap7(arr, i, arr.length);
         }
         for (int i = arr.length - 1; i > 0; i--) {
             int temp = arr[0];
             arr[0] = arr[i];
             arr[i] = temp;
-            adjustHeap(arr, 0, i);
+            adjustHeap7(arr, 0, i);
         }
     }
 
-    public static void adjustHeap(int[] arr, int i, int length) {
+    public static void adjustHeap7(int[] arr, int i, int length) {
         int temp = arr[i];
         for (int k = i * 2 + 1; k < length; k = k * 2 + 1) {
             if (k + 1 < length && arr[k] < arr[k + 1]) {
@@ -385,39 +385,104 @@ public class Sort {
         }
         arr[i] = temp;
     }
-    public static void quickSort(int [] arr,int left,int right){
-        int l=left;
-        int r=right;
-        int pivot=arr[(l+r)/2];
-        while(l<r){
-            while(arr[l]<pivot){
+
+    public static void quickSort7(int[] arr, int left, int right) {
+        int l = left;
+        int r = right;
+        int pivot = arr[(l + r) / 2];
+        while (l < r) {
+            while (arr[l] < pivot) {
                 l++;
             }
-            while(arr[r]>pivot){
+            while (arr[r] > pivot) {
                 r--;
             }
-            if(l>=r){
+            if (l >= r) {
                 break;
             }
-            int temp=arr[l];
-            arr[l]=arr[r];
-            arr[r]=temp;
-            if(arr[l]==pivot){
+            int temp = arr[l];
+            arr[l] = arr[r];
+            arr[r] = temp;
+            if (arr[l] == pivot) {
                 r--;
             }
-            if(arr[r]==pivot){
+            if (arr[r] == pivot) {
                 l++;
             }
         }
-        if(l==r){
+        if (l == r) {
             l++;
             r--;
         }
-        if(left<r){
-            quickSort(arr,left,r);
+        if (left < r) {
+            quickSort7(arr, left, r);
         }
-        if(right>l){
-            quickSort(arr,l,right);
+        if (right > l) {
+            quickSort7(arr, l, right);
         }
+    }
+
+    public static void quickSort(int[] arr, int left, int right) {
+        int l = left;
+        int r = right;
+        int pivot = arr[(l + r) / 2];
+        while (l < r) {
+            while (arr[l] < pivot) {
+                l++;
+            }
+            while (arr[r] > pivot) {
+                r--;
+            }
+            if (l >= r) {
+                break;
+            }
+            int temp = arr[l];
+            arr[l] = arr[r];
+            arr[r] = temp;
+            if (arr[l] == pivot) {
+                r--;
+            }
+            if (arr[r] == pivot) {
+                l++;
+            }
+        }
+        if (l == r) {
+            l++;
+            r--;
+        }
+        if (left < r) {
+            quickSort(arr, left, r);
+        }
+        if (right > l) {
+            quickSort(arr, l, right);
+        }
+    }
+
+    public static void heapSort(int[] arr) {
+        for (int i = arr.length / 2 - 1; i >= 0; i--) {
+            adjustHeap(arr, i, arr.length);
+        }
+        for (int i = arr.length - 1; i > 0; i--) {
+            int temp = arr[i];
+            arr[i] = arr[0];
+            arr[0] = temp;
+            adjustHeap(arr, 0, i);
+        }
+    }
+
+    public static void adjustHeap(int[] arr, int i, int length) {
+        int temp = arr[i];
+        for (int k = i * 2 + 1; k < length; k = k * 2 + 1) {
+            if (k + 1 < length && arr[k] < arr[k + 1]) {
+                k++;
+            }
+            if (arr[k] > temp) {
+                arr[i] = arr[k];
+                i = k;
+            } else {
+                break;
+            }
+        }
+        arr[i] = temp;
     }
 }
